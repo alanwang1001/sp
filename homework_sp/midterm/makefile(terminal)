@@ -1,0 +1,17 @@
+CXX = g++
+CXXFLAGS = -Wall -std=c++11
+TARGET = myshell
+
+all: $(TARGET)
+
+$(TARGET): main.o shell.o
+	$(CXX) $(CXXFLAGS) -o $(TARGET) main.o shell.o
+
+main.o: main.cpp shell.h
+	$(CXX) $(CXXFLAGS) -c main.cpp
+
+shell.o: shell.cpp shell.h
+	$(CXX) $(CXXFLAGS) -c shell.cpp
+
+clean:
+	rm -f *.o $(TARGET)
